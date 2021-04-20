@@ -10,3 +10,7 @@ p-net → o-net → r-net
 
 참고: https://github.com/ipazc/mtcnn
 
+face detection algorithms 비교
+https://towardsdatascience.com/face-detection-models-which-to-use-and-why-d263e82c302c
+
+
