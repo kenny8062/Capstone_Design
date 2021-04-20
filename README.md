@@ -15,5 +15,8 @@ https://towardsdatascience.com/face-detection-models-which-to-use-and-why-d263e8
 
 dlib 라이브러리를 사용하면 간편하지만 성능상에서의 큰 이점이 없어서 MTCNN를 활용하는 것이 더 좋은 효과를 보일 수도 있다. 
 
+MTCNN - https://github.com/srivatsan88/YouTubeLI/blob/master/Face_Detection_using_MTCNN.ipynb
+
+
 
 
