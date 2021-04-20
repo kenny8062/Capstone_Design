@@ -13,4 +13,7 @@ p-net → o-net → r-net
 face detection algorithms 비교
 https://towardsdatascience.com/face-detection-models-which-to-use-and-why-d263e82c302c
 
+dlib 라이브러리를 사용하면 간편하지만 성능상에서의 큰 이점이 없어서 MTCNN를 활용하는 것이 더 좋은 효과를 보일 수도 있다. 
+
+
 
