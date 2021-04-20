@@ -7,3 +7,6 @@ face detection, bounding box regressioni(얼굴 위치를 알려주는 박스의
 p-net → o-net → r-net
 
 간단하고 빠르게 처리할 수 있지만, bottle neck 현상이 일어날 수 있다. 
+
+참고: https://github.com/ipazc/mtcnn
+
