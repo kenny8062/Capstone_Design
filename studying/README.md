@@ -17,6 +17,14 @@ dlib 라이브러리를 사용하면 간편하지만 성능상에서의 큰 이�
 
 MTCNN - https://github.com/srivatsan88/YouTubeLI/blob/master/Face_Detection_using_MTCNN.ipynb
 
+===========================================================================================================
+
+👍 traffic light detection
+https://automaticaddison.com/how-to-detect-and-classify-traffic-lights/
+
+use transfer learning 
+
+
 
 
 
