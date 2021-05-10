@@ -14,7 +14,7 @@ from networks.convolutional.lenet import LeNet
 
 def main():
     print("[INFO] loading dataset...")
-    data, labels, args = loadDataset()
+    data, labels, args = loadDataset() ## 여기서 나오는 label들은 사전에 준비된 image들로 부터 뽑아낸 label ex) ['positive', 'negative', 'negative'...]
 
     print("[INFO] applying one-hot encoding to labels...")
     label_encoder, labels = oneHotEncoding(labels)

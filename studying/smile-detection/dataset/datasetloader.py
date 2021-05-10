@@ -21,7 +21,9 @@ class DatasetLoader:
         self.labels = []
         self.data_path = data_path
 
-    def load(self, verbose=-1, image_width=28, label_name_position=-3): ## 다른 package에서 사용될듯
+    def load(self, verbose=-1, image_width=28, label_name_position=-3): ## labe_name_position: img_path를 split을 하고 -3인 위치에 label이 있다
+                                                                        ## ex) 2021 / 05 / 10 / smile / thomas / jpg 
+                                                                        ## 해당 path에서 img를 가져와 전처리 후 forward 한 값과 label 값이 일치하는지 확인
         """
         Function to load the dataset from given path
 
@@ -31,7 +33,7 @@ class DatasetLoader:
         :return: a tuple of numpy arrays data and labels
         """
         image_paths = sorted(list(paths.list_images(self.data_path)))
-        for (i, image_path) in enumerate(image_paths): ### 반복하면서 frame으로 부터 전처리된 array 데이터와 label(smiling or not)을 반환한다. --> 학습의 과정
+        for (i, image_path) in enumerate(image_paths): 
             image = self._loadImage(image_path, image_width) 
             self.data.append(image) 
             label = self._extractLabel(image_path, label_name_position)
@@ -56,7 +58,7 @@ class DatasetLoader:
         image = self._preprocess(image, image_width)
         return image
 
-    def _preprocess(self, image, image_width): ### 영상의 한 frame을 받아와서 greyscale로 변환후 resize 하고 array 형태로 변환하여 반환하는 전처리 과정
+    def _preprocess(self, image, image_width): ### img를 greyscale로 변환후 resize 하고 array 형태로 변환하여 반환하는 전처리 과정
         """
         Internal method to preprocess the image
 
@@ -69,7 +71,7 @@ class DatasetLoader:
         image = img_to_array(image)
         return image
 
-    def _extractLabel(self, image_path, label_name_pos): ## 해당 frame을 보고 맞는 label을 반환한다. 즉, 반환하기 위해서는 모델을 통한 forward가 필요할듯.
+    def _extractLabel(self, image_path, label_name_pos):
         """
         Internal method to extract the labels from path
 
