@@ -1,5 +1,4 @@
 # Capstone_Design
-종설
 
 multi-tasked cascaded face detection (MTCNN)
 face detection, bounding box regressioni(얼굴 위치를 알려주는 박스의 위치를 세세하게 조정하는), face alignment(눈코입의 위치를 알려주는) 3개의 task를 동시에 실현시켜서 multi task
