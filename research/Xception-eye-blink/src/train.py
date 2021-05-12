@@ -5,14 +5,17 @@ import numpy as np
 import random
 import model
 import csv
-import  matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import glob
 from PIL import Image
 from torchvision.transforms import ToTensor
 from torch.utils.data import DataLoader
 
 import cv2
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+# openCV에서 미리 얼굴, 눈 등에 대한 미리 훈련된 데이터들
+# 원래는 argument로 받아서 run 한다.
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')  
+# 얼굴 정면에 대해 미리 학습한 파일? 모델?
 eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 
 if not torch.cuda.is_available():
@@ -37,22 +40,25 @@ class DataSetFactory:
         images = []
         labels = []
 
+        # open의 label은 1 close의 label은 0
         files = list(map(lambda x: {'file': x, 'label':1}, glob.glob('../dataset/dataset_B_Eye_Images/openRightEyes/*.jpg')))
         files.extend(list(map(lambda x: {'file': x, 'label':1}, glob.glob('../dataset/dataset_B_Eye_Images/openLeftEyes/*.jpg'))))
         files.extend(list(map(lambda x: {'file': x, 'label':0}, glob.glob('../dataset/dataset_B_Eye_Images/closedLeftEyes/*.jpg'))))
         files.extend(list(map(lambda x: {'file': x, 'label':0}, glob.glob('../dataset/dataset_B_Eye_Images/closedRightEyes/*.jpg'))))
         random.shuffle(files)
+        # train data에서 이미지는 images에, 이미지에 해당하는 label은 labels에 저장
         for file in files:
             img = cv2.imread(file['file'])
             images.append(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY))
             labels.append(file['label'])
-
+        
+        # train data에서 validation data 추출
         validation_length = int(len(images) * validation_ratio)
         validation_images = images[:validation_length]
         validation_labels = labels[:validation_length]
         images = images[validation_length:]
         labels = labels[validation_length:]
-
+        
         print('training size %d : val size %d' % (len(images), len(validation_images)))
 
         train_transform = transforms.Compose([
@@ -62,6 +68,7 @@ class DataSetFactory:
             ToTensor(),
         ])
 
+        # DataSetFactory 에서 정의되는 training / validation data들
         self.training = DataSet(transform=train_transform, images=images, labels=labels)
         self.validation = DataSet(transform=val_transform, images=validation_images, labels=validation_labels)
 

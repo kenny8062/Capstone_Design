@@ -13,6 +13,7 @@ from torchsummary import summary
 from grad_cam import BackPropagation, GradCAM,GuidedBackPropagation
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 shape = (24,24)
 classes = [
     'Close',
@@ -23,7 +24,7 @@ def preprocess(image_path):
     transform_test = transforms.Compose([
         transforms.ToTensor()
     ])
-    image = cv2.imread(image_path['path'])
+    image = cv2.imread(image_path['path']) #  image_path['path'] -> -'../test/open_man.jpg'
     faces = face_cascade.detectMultiScale(
         image,
         scaleFactor=1.1,
@@ -35,8 +36,9 @@ def preprocess(image_path):
         print('no face found')
         face = cv2.resize(image, shape)
         return None, face
-    else:
-        (x, y, w, h) = faces[0]
+    else: # img에서 발견된 얼굴이 한개라도 있다면.
+        (x, y, w, h) = faces[0] # img에서 첫번째로 발견된 얼굴의 위치 좌표
+        
         face = image[y:y + h, x:x + w]
         (x, y, w, h) = image_path['left']
         left_eye = face[y:y + h, x:x + w]
