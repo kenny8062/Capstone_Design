@@ -44,7 +44,7 @@ class DatasetLoader:
 
         self.data   = np.array(self.data, dtype="float") / 255.0
         self.labels = np.array(self.labels)
-        return (self.data, self.labels)
+        return (self.data, self.labels) ### 준비된 데이터들(images)로 부터 이미지와 label들을 추출하여 저장한 list들을 반환한다. 
 
     def _loadImage(self, image_path, image_width):
         """
