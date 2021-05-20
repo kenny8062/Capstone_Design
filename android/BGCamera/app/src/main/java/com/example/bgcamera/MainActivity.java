@@ -19,6 +19,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.chaquo.python.PyObject;
+import com.chaquo.python.Python;
+import com.chaquo.python.android.AndroidPlatform;
+
 public class MainActivity extends AppCompatActivity {
     static final int CODE_PERM_SYSTEM_ALERT_WINDOW = 6111;
     Button butStart;
@@ -75,6 +79,13 @@ public class MainActivity extends AppCompatActivity {
         butStart = findViewById(R.id.butStart);
         butStartPreview = findViewById(R.id.butStartPreview);
         butStop=findViewById(R.id.butStop);
+        if(!Python.isStarted()){
+            Python.start(new AndroidPlatform(this));
+        }
+        Python py=Python.getInstance();
+        PyObject pyobj=py.getModule("mypython");
+        PyObject obj = pyobj.callAttr("main");
+        butStop.setText(obj.toString());
         butStart.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v) {
