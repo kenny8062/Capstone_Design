@@ -21,6 +21,9 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+// socket.io - add2
+app.io.attach(server); 
+
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -88,3 +91,28 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+ 
+ //socket.io 
+// const io = require('socket.io')(server);
+
+// var clients = []
+
+// io.on('connection',function(socket){
+//   clients.push(socket);
+// console.log("New Client!");
+
+//   socket.on('disconnect', function(data) {
+//     console.log('Got disconnect!');
+
+//     var i = clients.indexOf(socket);
+//     clients.splice(i, 1);
+//  });
+
+//   //echo
+//   socket.on('SEND',function(data){
+// console.log("받은 메세지 : "+data.message);
+//       data.message='Message from Server : '+data.message;
+//       socket.emit('SEND',data);
+//   });
+// });

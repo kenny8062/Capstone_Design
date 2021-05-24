@@ -38,4 +38,22 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
+// socket.io - add2 
+// app.io = require('socket.io')();
+
+// app.io.on('connection',(socket) => {
+//   console.log('유저가 들어왔다');
+  
+//   socket.on('disconnect', () => {
+//       console.log('유저 나갔다');
+//   });
+
+//   socket.on('chat-msg', (msg) => {
+//     console.log(msg)
+//     app.io.emit('chat-msg', msg);
+//   });
+
+// });
+
 module.exports = app;
