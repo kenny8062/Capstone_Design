@@ -17,16 +17,6 @@ package version
 </ul>
 </div>
 
-<style>
-code {
-  font-family: Consolas,"courier new";
-  color: crimson;
-  background-color: #f1f1f1;
-  padding: 2px;
-  font-size: 105%;
-}
-</style>
-
 <div style = "font-size: 15px; line-height: 25px; text-align: left">
 android 와 양방향 통신하기 위해 서버에서 <code>restful api</code>가 아닌 <code>socket io</code> 프로토콜을 사용하였다. <br>
 tensorflow lite 를 사용하여 android와 통신하는 것이 가장 좋은 방법이지만, 시간적 여유가 없어서 서버와 통신하는 방식으로 구현하다가 중요한 점을 알게 되었다. <br>
