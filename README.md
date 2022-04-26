@@ -36,7 +36,7 @@ ex) 캠으로 사용자의 행동을 인식하여 Auto Touch 기능 등
 6. 세션 객체에 아까 만든 서페이스를 결합한 request를 받아들여 동작하고 출력값을 서페이스로 받아옴.
 
 
-# Notification API
+# startForeGround
 
 - 사용자에게 보여줄 알림을 설정 후 startForeground 하여 앱을 ForeGround로 올림
 ```java
